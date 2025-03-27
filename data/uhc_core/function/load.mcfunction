@@ -10,6 +10,8 @@ scoreboard objectives add UHCcore.startTriggered dummy
 scoreboard objectives add UHCcore.Allowtrigger dummy
 scoreboard objectives add UHCcore.Timer dummy
 scoreboard objectives add UHCcore.Worldborder dummy
+scoreboard objectives add UHCcore.died deathCount
+scoreboard objectives add UHCcore.winner dummy
 scoreboard players add Worldborder UHCcore.Worldborder 0
 scoreboard players set divider UHCcore.Worldborder 2 
 scoreboard players set Hour(s) UHCcore.Timer 0
@@ -21,6 +23,9 @@ scoreboard players set bossbar.switch UHCcore.Timer 0
 scoreboard players set bossbar.tick(s) UHCcore.Timer 0
 scoreboard players set playing UHCstart 0
 scoreboard players reset @a UHCstart
+scoreboard players set StartCount UHCcore.Timer 0
+scoreboard players set @a UHCcore.died 0
+scoreboard players set @a UHCcore.winner 0
 
 # make trigger scoreboard can trigger when not ready
 scoreboard players set Allow UHCcore.Allowtrigger 1
@@ -44,6 +49,9 @@ bossbar add uhc.timer [{"text":"Time Left : ","color":"green"},{"score":{"name":
 bossbar set minecraft:uhc.timer color green
 bossbar set minecraft:uhc.timer style progress
 
+# bossbar show information (first 30 seconds when UHC start)
+bossbar add uhc.information [{"text":""}]
+
 # create team
 team add players [{"text":"Player","color":"gold"}]
 team modify players prefix [{"text":"[UHC] ","color":"gold"}]
@@ -52,8 +60,13 @@ team add observer [{"text":"Observer","color":"gray"}]
 team modify observer prefix [{"text":"[UHC] ","color":"gray"}]
 
 # bossbar invisible
+bossbar set minecraft:uhc.timer visible false
 bossbar set minecraft:amount.player.joined visible false
 bossbar set minecraft:worldborder.coordinate visible false
+
+# worldborder reset
+worldborder center 0 0
+worldborder set 2000
 
 
 # show title and sound

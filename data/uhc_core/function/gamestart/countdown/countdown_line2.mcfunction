@@ -1,3 +1,3 @@
 title @a title [{"text":"UHC Will Be Start In 2..","color":"yellow","bold":true}]
-title @a subtitle [{"text":"Find Resource And Go to No.1","color":"gold","bold":true}]
+title @a subtitle [{"text":"Find Resource And Go to 1st","color":"gold"}]
 execute as @a at @a run playsound ui.button.click ambient @s ~ ~ ~ 1 1.6

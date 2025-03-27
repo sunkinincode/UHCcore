@@ -25,7 +25,9 @@ execute if score Allplayers UHCcore.PlayerAmount matches 2..4 run bossbar set mi
 execute if score Allplayers UHCcore.PlayerAmount matches 5.. run bossbar set minecraft:amount.player.joined name [{"score":{"name":"Allplayers","objective":"UHCcore.PlayerAmount"},"color":"green"},{"text":" Players has joined","color":"green"}]
 execute if score Allplayers UHCcore.PlayerAmount matches 5.. run bossbar set minecraft:amount.player.joined color green
 
+## always update data above bossbar
 bossbar set worldborder.coordinate name [{"text":"Worldborder is ","color":"aqua"},{"score":{"name":"Worldborder","objective":"UHCcore.Worldborder"},"bold":true,"color":"aqua"},{"text":" blocks away from center.","color":"aqua"}]
+bossbar set uhc.timer name [{"text":"Time Left : ","color":"green"},{"score":{"name":"Hour(s)","objective":"UHCcore.Timer"},"bold":true,"color":"green"},{"text":" : ","color":"green","bold":true},{"score":{"name":"Minute(s)","objective":"UHCcore.Timer"},"bold":true,"color":"green"},{"text":" : ","color":"green","bold":true},{"score":{"name":"Second(s)","objective":"UHCcore.Timer"},"bold":true,"color":"green"}]
 
 # worldborder calculation
 execute store result score Worldborder UHCcore.Worldborder run worldborder get
@@ -53,3 +55,28 @@ execute as @a[scores={observe=1},team=observer] run function uhc_core:trigger_le
 execute if score playing UHCstart matches 0 run bossbar set minecraft:amount.player.joined players @a
 execute if score playing UHCstart matches 0 run bossbar set minecraft:amount.player.joined visible true
 
+# bossbar switch
+execute if score StartCount UHCcore.Timer matches 1 run scoreboard players add bossbar.tick(s) UHCcore.Timer 1
+execute if score StartCount UHCcore.Timer matches 1 run execute if score bossbar.tick(s) UHCcore.Timer matches 600.. run function uhc_core:bossbar/switching
+
+# Timer Count down
+execute if score StartCount UHCcore.Timer matches 1 run scoreboard players add tick(s) UHCcore.Timer 1
+execute store result bossbar minecraft:uhc.timer value run scoreboard players add TimeAmount UHCcore.Timer 0
+## if tick equal 20 always remove 1 second
+execute if score tick(s) UHCcore.Timer matches 20.. run function uhc_core:timer/decrease_second
+## if 10 minutes left will show title
+execute if score Minute(s) UHCcore.Timer matches 10 run execute if score Second(s) UHCcore.Timer matches 2 run schedule function uhc_core:timer/10_minutes_left 1s
+## if 5 minutes left will show title
+execute if score Minute(s) UHCcore.Timer matches 5 run execute if score Second(s) UHCcore.Timer matches 2 run schedule function uhc_core:timer/5_minutes_left 1s
+## if 1 minute left will show title
+execute if score Minute(s) UHCcore.Timer matches 1 run execute if score Second(s) UHCcore.Timer matches 2 run schedule function uhc_core:timer/1_minutes_left 1s
+## if 5 seconds left will count down
+execute if score Minute(s) UHCcore.Timer matches 0 run execute if score Second(s) UHCcore.Timer matches 7 run schedule function uhc_core:timer/5_seconds_left/5_seconds_left 1t
+
+# when player died player will turn into observe
+execute as @a[scores={UHCcore.died=1}] run function uhc_core:trigger_join_team/observe
+
+# when player has won
+execute if score Players UHCcore.PlayerAmount matches 1 run execute if score playing UHCstart matches 1 as @a[scores={UHCcore.winner=0},team=!observer] run function uhc_core:winner/winner
+
+gamemode spectator @a[team=observer]

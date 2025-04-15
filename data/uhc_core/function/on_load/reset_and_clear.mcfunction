@@ -29,3 +29,7 @@ gamemode survival @a[scores={UHccore.gamemode.tmp=0}]
 gamemode creative @a[scores={UHccore.gamemode.tmp=1}] 
 gamemode adventure @a[scores={UHccore.gamemode.tmp=2}] 
 gamemode spectator @a[scores={UHccore.gamemode.tmp=3}] 
+
+# bossbar visibility
+bossbar set minecraft:uhc.timer visible false
+bossbar set minecraft:worldborder.coordinate visible false

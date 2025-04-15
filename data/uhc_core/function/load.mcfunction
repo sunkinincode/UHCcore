@@ -1,5 +1,5 @@
 # show tellraw reloaded
-tellraw @a ["",{"text":"#---------------------------------------------------#","color":"gold"},{"text":"\n"},{"text":"#","color":"gold"},{"text":"       UHC Core Made By dEWGAMIING01","bold":true,"color":"dark_green"},{"text":"        #","color":"gold"},{"text":"\n"},{"text":"#","color":"gold"},{"text":"       You can join UHC by /trigger joinUHC","color":"green"},{"text":"          #","color":"gold"},{"text":"\n"},{"text":"#","color":"gold"},{"text":"   You can Observe a UHC by /trigger observe","color":"green"},{"text":"     #","color":"gold"},{"text":"\n"},{"text":"#","color":"gold"},{"text":"             Start UHC by /trigger UHCstart","color":"yellow"},{"text":"               #","color":"gold"},{"text":"\n"},{"text":"#---------------------------------------------------#","color":"gold"}]
+tellraw @a [{"text":"UHC Core reloaded!","color":"gold"}]
 
 # create scoreboard
 scoreboard objectives add UHCcore.PlayerAmount dummy
@@ -71,10 +71,20 @@ worldborder set 2000
 
 # show title and sound
 title @a title [{"text":"UHC has been reset!","color":"red"}]
-execute as @a at @s run playsound minecraft:entity.ender_dragon.ambient ambient @a ~ ~ ~ 1 2
+execute as @a at @s run playsound minecraft:entity.player.levelup ambient @a ~ ~ ~ 1 0.3
 
 
-# debug
+# clear team and scoreboard
+execute as @a[team=observer] run gamemode survival
 team leave @a
 scoreboard players reset @a observe
 scoreboard players reset @a joinUHC
+effect give @a regeneration 5 255 true
+
+# gamerule
+gamerule commandBlockOutput true
+gamerule sendCommandFeedback true
+gamerule showDeathMessages true
+
+# clear title times
+title @a times 10 60 20

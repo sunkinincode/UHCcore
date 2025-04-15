@@ -1,5 +1,10 @@
 {
 	"values": [
-		"uhc_core:load"
+		"uhc_core:on_load/bossbar_init",
+		"uhc_core:on_load/debug",
+		"uhc_core:on_load/reset_and_clear",
+		"uhc_core:on_load/scoreboard_init",
+		"uhc_core:on_load/show_text",
+		"uhc_core:on_load/team_init"
 	]
 }

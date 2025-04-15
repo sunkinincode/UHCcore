@@ -12,5 +12,5 @@ execute if score TimeAmount UHCcore.Timer matches 86400 run scoreboard players s
 
 
 # Timer Bossbar initialize
-execute store result bossbar minecraft:uhc.timer max run scoreboard players add TimeAmount UHCcore.Timer 0
+execute store result bossbar minecraft:uhc.timer max run scoreboard players get TimeAmount UHCcore.Timer
 scoreboard players set StartCount UHCcore.Timer 1

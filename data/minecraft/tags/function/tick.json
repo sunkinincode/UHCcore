@@ -1,5 +1,15 @@
 {
 	"values": [
-		"uhc_core:tick"
+		"uhc_core:before_uhc_start/trigger_uhcstart",
+		"uhc_core:bossbar/bossbar_mechanic",
+		"uhc_core:timer/timer_mechanic",
+		"uhc_core:before_uhc_start/toggle_trigger",
+		"uhc_core:scoreboard_data/repeat_store_data",
+		"uhc_core:scoreboard_data/gamemode_tmp",
+		"uhc_core:trigger_team_event/team_mechanic",
+		"uhc_core:scoreboard_data/misc",
+		"uhc_core:during_play/player_remain_less_2",
+		"uhc_core:winner/check_player_win",
+		"uhc_core:during_play/change_gamemode"
 	]
 }

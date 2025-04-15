@@ -1,0 +1,1 @@
+execute store result score value UHCcore.RandomEvents run random value 1..6

@@ -6,5 +6,3 @@ bossbar set minecraft:amount.player.joined visible false
 bossbar set minecraft:uhc.timer visible false
 bossbar set minecraft:uhc.information visible false
 bossbar set worldborder.coordinate visible false
-
-schedule function uhc_core:fight_time/show_title 3s

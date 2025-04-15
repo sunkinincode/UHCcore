@@ -1,0 +1,2 @@
+# when player has won
+execute if score DiedPlayers UHCcore.PlayerAmount = Players.tmp UHCcore.PlayerAmount unless score Allplayers UHCcore.PlayerAmount matches 0..1 if score playing UHCstart matches 1 as @a[tag=!died,tag=!winner,team=!observer,team=!died_player] run function uhc_core:winner/winner

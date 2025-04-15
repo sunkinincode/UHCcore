@@ -1,0 +1,2 @@
+# store amount player who play UHC before UHC start to check player has won or player in world has leave
+execute if score playing UHCstart matches 0 run scoreboard players operation Players.tmp UHCcore.PlayerAmount = Players UHCcore.PlayerAmount

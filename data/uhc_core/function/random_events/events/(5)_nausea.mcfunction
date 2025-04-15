@@ -1,0 +1,1 @@
+say earthquake or im nausea

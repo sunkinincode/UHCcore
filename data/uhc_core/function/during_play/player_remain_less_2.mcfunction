@@ -1,0 +1,2 @@
+# restart game when players has 2 or less 
+execute unless score DiedPlayers UHCcore.PlayerAmount = Players UHCcore.PlayerAmount if score Allplayers UHCcore.PlayerAmount matches 0..1 if score playing UHCstart matches 1 run function uhc_core:during_play/players_not_enough

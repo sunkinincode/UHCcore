@@ -1,0 +1,1 @@
+execute as @a[scores={UHCcore.settings=1}] run function uhc_core:settings/show_settings

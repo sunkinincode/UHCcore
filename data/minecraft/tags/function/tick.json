@@ -10,6 +10,8 @@
 		"uhc_core:scoreboard_data/misc",
 		"uhc_core:during_play/player_remain_less_2",
 		"uhc_core:winner/check_player_win",
-		"uhc_core:during_play/change_gamemode"
+		"uhc_core:during_play/change_gamemode",
+		"uhc_core:settings/toggle_settings",
+		"uhc_core:random_events/timer_cooldown"
 	]
 }

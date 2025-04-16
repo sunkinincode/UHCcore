@@ -7,3 +7,6 @@ execute store result score DiedPlayers UHCcore.PlayerAmount run execute if entit
 # worldborder calculation
 execute store result score Worldborder UHCcore.Worldborder run worldborder get
 scoreboard players operation Worldborder UHCcore.Worldborder /= divider UHCcore.Worldborder
+
+# store health data
+execute as @a run execute store result score @s UHCcore.Health run data get entity @s Health

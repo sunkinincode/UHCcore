@@ -11,15 +11,16 @@ execute as @a at @s run playsound minecraft:entity.player.levelup ambient @a ~ ~
 # clear team and scoreboard
 tag @a[tag=died] remove died
 tag @a[tag=winner] remove winner
+tag @a remove dontShowBossbar4Me
 team leave @a
-scoreboard players reset @a observe
-scoreboard players reset @a joinUHC
 effect give @a regeneration 5 255 true
 
 # gamerule
 gamerule commandBlockOutput false
-gamerule sendCommandFeedback true
+gamerule sendCommandFeedback false
 gamerule showDeathMessages true
+gamerule doImmediateRespawn false
+
 
 # reset title times
 title @a times 10 60 20
@@ -33,3 +34,9 @@ gamemode spectator @a[scores={UHccore.gamemode.tmp=3}]
 # bossbar visibility
 bossbar set minecraft:uhc.timer visible false
 bossbar set minecraft:worldborder.coordinate visible false
+bossbar set minecraft:uhc.information visible false
+
+# make trigger scoreboard can trigger when not ready
+scoreboard players set Allow UHCcore.Allowtrigger 1
+
+scoreboard objectives setdisplay below_name

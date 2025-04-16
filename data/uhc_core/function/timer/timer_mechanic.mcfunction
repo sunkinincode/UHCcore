@@ -1,6 +1,6 @@
 # Timer Count down
 execute if score StartCount UHCcore.Timer matches 1 run scoreboard players add tick(s) UHCcore.Timer 1
-execute store result bossbar minecraft:uhc.timer value run scoreboard players add TimeAmount UHCcore.Timer 0
+execute store result bossbar minecraft:uhc.timer value run scoreboard players get TimeAmount UHCcore.Timer
 ## if tick equal 20 always remove 1 second
 execute if score tick(s) UHCcore.Timer matches 20.. run function uhc_core:timer/decrease_second
 ## if 10 minutes left will show title

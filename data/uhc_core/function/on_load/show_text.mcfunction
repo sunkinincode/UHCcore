@@ -1,2 +1,2 @@
 # show tellraw reloaded
-tellraw @a [{"text":"UHC Core reloaded!","color":"gold"}]
+tellraw @a [{"text":"\nUHC Core reloaded!","color":"gold"}]
